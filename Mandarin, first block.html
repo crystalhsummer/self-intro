@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mandarin, first block</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,300;0,7..72,400;0,7..72,600;1,7..72,400&family=Noto+Serif+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EDEFEE; --ink:#191D1C; --muted:#5D6462; --rule:#CFD4D2;
+  --card:#E3E7E5; --accent:#1F6B63; --warn:#A8512F;
+  --t1:#C23B22; --t2:#A86A0E; --t3:#1F7A4D; --t4:#2560B0; --t0:#7C8482;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light dark;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#131718;--ink:#E5E8E5;--muted:#919894;--rule:#2B302F;
+    --card:#1B201F;--accent:#78C4B7;--warn:#DD9370;
+    --t1:#F1968A;--t2:#E0AD5C;--t3:#63C596;--t4:#86B2EA;--t0:#8C9491;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#131718;--ink:#E5E8E5;--muted:#919894;--rule:#2B302F;
+  --card:#1B201F;--accent:#78C4B7;--warn:#DD9370;
+  --t1:#F1968A;--t2:#E0AD5C;--t3:#63C596;--t4:#86B2EA;--t0:#8C9491;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 4.2rem)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:'Literata',Georgia,serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.hz{font-family:'Noto Serif SC','Songti SC',serif}
+.py{font-family:'Noto Serif SC','Literata',serif;font-variant-ligatures:none}
+.wrap{max-width:760px;margin:0 auto;padding:0 1.15rem}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.t1{color:var(--t1)}.t2{color:var(--t2)}.t3{color:var(--t3)}.t4{color:var(--t4)}.t0{color:var(--t0)}
+body.plain .t1,body.plain .t2,body.plain .t3,body.plain .t4,body.plain .t0{color:inherit}
+body.plain .ck .py,body.plain .ck .en{color:var(--muted)}
+
+.bar{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--rule);
+  padding-top:env(safe-area-inset-top,0px)}
+.bar .inner{max-width:760px;margin:0 auto;padding:.55rem 1.15rem;display:flex;gap:.9rem;
+  overflow-x:auto;font-size:.82rem;scrollbar-width:none}
+.bar .inner::-webkit-scrollbar{display:none}
+.bar a{color:var(--muted);text-decoration:none;white-space:nowrap;padding:.15rem 0;border-bottom:2px solid transparent}
+.bar a:hover,.bar a.on{color:var(--ink);border-bottom-color:var(--accent)}
+
+.hero{padding:2.75rem 0 2rem;border-bottom:1px solid var(--rule)}
+.eyebrow{font-size:.82rem;color:var(--muted);margin:0 0 1.1rem;font-style:italic}
+.goal{margin:0 0 1.5rem}
+.goal .hz{display:block;font-size:clamp(1.3rem,5.2vw,1.8rem);line-height:1.8;font-weight:500}
+.goal .py{display:block;font-size:.88rem;margin-top:.9rem;line-height:1.85}
+h1{font-size:1.35rem;font-weight:600;margin:0 0 .6rem}
+.lede{color:var(--muted);max-width:58ch;margin:0}
+
+section{padding:2.6rem 0;border-bottom:1px solid var(--rule)}
+section > h2{font-size:1.18rem;font-weight:600;margin:0 0 .35rem}
+section > .note{color:var(--muted);margin:0 0 1.4rem;max-width:60ch;font-size:.95rem}
+h3{font-size:.96rem;font-weight:600;margin:1.7rem 0 .55rem}
+p{max-width:62ch}
+
+.facts{list-style:none;padding:0;margin:0;display:grid;gap:1rem}
+@media(min-width:620px){.facts{grid-template-columns:1fr 1fr}}
+.facts li{border-left:2px solid var(--accent);padding-left:.85rem}
+.facts b{display:block;font-weight:600;margin-bottom:.1rem}
+.facts span{color:var(--muted);font-size:.93rem}
+
+.tones{display:grid;gap:.55rem;margin:.9rem 0 1.4rem}
+.tone{display:grid;grid-template-columns:2.8rem 1fr;gap:.85rem;align-items:start;
+  background:var(--card);padding:.7rem .9rem;border-radius:3px}
+.tone .mark{font-family:'Noto Serif SC',serif;font-size:1.5rem;line-height:1;text-align:center}
+.tone b{font-weight:600;font-size:.95rem}
+.tone span.d{display:block;color:var(--muted);font-size:.9rem}
+.pairs{font-family:'Noto Serif SC',serif;font-size:1.02rem;background:var(--card);
+  padding:.75rem .9rem;border-radius:3px;line-height:2.1;word-spacing:.3em}
+
+.legend{display:flex;flex-wrap:wrap;gap:.3rem .95rem;font-size:.82rem;color:var(--muted);margin:0 0 1rem}
+.legend b{font-weight:600}
+
+.drill{background:var(--card);border-radius:4px;padding:1.2rem 1.1rem;margin:1rem 0 0}
+.drill .prompt{font-size:1.05rem;min-height:2.6rem;margin:0 0 .9rem}
+.drill .answer{min-height:5.2rem;margin:0 0 1rem}
+.drill .answer.hidden{visibility:hidden}
+.drill .row{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+.drill .count{margin-left:auto;font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums}
+button{font-family:inherit;font-size:.86rem;cursor:pointer;border-radius:3px;
+  border:1px solid var(--rule);background:none;color:var(--ink);padding:.42rem .85rem}
+button:hover{border-color:var(--ink)}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--bg);font-weight:600}
+button.primary:hover{opacity:.88}
+button[disabled]{opacity:.4;cursor:default}
+.toggles{display:flex;gap:.45rem;flex-wrap:wrap;margin:0 0 1.2rem}
+.toggles button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+
+button.spk{border:none;padding:.25rem;line-height:0;color:var(--muted);flex:none;border-radius:50%}
+button.spk:hover{color:var(--accent);background:var(--card)}
+button.spk svg{width:17px;height:17px;display:block}
+button.spk.on{color:var(--accent)}
+body.nospeak button.spk{display:none}
+
+/* interlinear */
+.gloss{display:flex;flex-wrap:wrap;align-items:flex-start;gap:.2rem .6rem}
+.ck{display:flex;flex-direction:column;align-items:flex-start;line-height:1.3}
+.ck .hz{font-size:1.24rem;line-height:1.45}
+.ck .py{font-size:.8rem;margin-top:.1rem}
+.ck .en{font-size:.76rem;font-style:italic;margin-top:.02rem;opacity:.9}
+.nat{font-size:.86rem;color:var(--muted);font-style:italic;margin:.45rem 0 0}
+
+.setname{font-size:.82rem;color:var(--muted);font-style:italic;margin:1.9rem 0 .6rem}
+.setname:first-of-type{margin-top:.6rem}
+.sent{padding:.85rem 0;border-bottom:1px solid var(--rule);display:flex;gap:.6rem;align-items:flex-start}
+.sent .body{flex:1;min-width:0}
+.sent .spk{margin-top:.4rem}
+body.hide-en .ck .en,body.hide-en .nat{display:none}
+
+.search{width:100%;font-family:inherit;font-size:.95rem;padding:.55rem .75rem;
+  background:var(--card);border:1px solid var(--rule);border-radius:3px;color:var(--ink);margin-bottom:.9rem}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+td{border-bottom:1px solid var(--rule);padding:.42rem .5rem .42rem 0;vertical-align:baseline}
+td.h{font-family:'Noto Serif SC',serif;font-size:1.12rem;width:6.2rem}
+td.p{font-family:'Noto Serif SC',serif;font-size:.85rem;width:7.4rem}
+td.a{width:1.9rem;padding-right:0}
+tr.gone{display:none}
+.empty{color:var(--muted);font-style:italic;padding:.8rem 0;display:none}
+
+.room{display:grid;gap:1.4rem}
+.room article{border-left:2px solid var(--rule);padding-left:.95rem}
+.room article.flag{border-left-color:var(--warn)}
+.room h3{margin:0 0 .3rem}
+.room p{margin:.3rem 0;color:var(--muted);font-size:.95rem}
+.room .inline{display:flex;align-items:flex-start;gap:.4rem;flex-wrap:wrap;margin:.6rem 0}
+
+.weeks{list-style:none;padding:0;margin:.8rem 0 0;display:grid;gap:.1rem}
+.weeks li{border-bottom:1px solid var(--rule)}
+.weeks label{display:flex;gap:.7rem;align-items:baseline;padding:.55rem .2rem;cursor:pointer}
+.weeks input{accent-color:var(--accent);width:1rem;height:1rem;flex:none;position:relative;top:.15rem}
+.weeks .n{font-variant-numeric:tabular-nums;color:var(--muted);font-size:.82rem;width:1.3rem;flex:none}
+.weeks .t{flex:1;display:block}
+.weeks .t > b{display:block;font-weight:600;font-size:.97rem}
+.weeks .daily{display:block;font-size:.85rem;color:var(--muted);margin-top:.12rem}
+.weeks .bring{display:block;font-size:.85rem;margin-top:.22rem}
+.weeks .bring b{color:var(--accent);font-weight:600}
+.weeks .daily .hz,.weeks .bring .hz{font-size:.95rem}
+.weeks li.on .t > b{color:var(--muted);text-decoration:line-through}
+.weeks li.on .daily,.weeks li.on .bring{opacity:.55}
+.weeks label{align-items:flex-start}
+
+.audionote{background:var(--card);border-left:2px solid var(--warn);padding:.75rem .9rem;
+  margin:1rem 0 0;font-size:.88rem;color:var(--muted);display:none}
+body.nospeak .audionote{display:block}
+footer{padding:2rem 0 3.5rem;color:var(--muted);font-size:.86rem}
+</style>
+</head>
+<body>
+
+<div class="bar"><div class="inner">
+  <a href="#how">How this works</a>
+  <a href="#warmup">Daily warm-up</a>
+  <a href="#drill">Drill</a>
+  <a href="#say">What you can say</a>
+  <a href="#words">Words</a>
+  <a href="#room">In the room</a>
+  <a href="#takehome">Take-home</a>
+</div></div>
+
+<div class="wrap">
+
+<header class="hero">
+  <p class="eyebrow">By session fifteen, without notes:</p>
+  <div class="goal">
+    <span class="hz" id="goalHz"></span>
+    <span class="py" id="goalPy"></span>
+  </div>
+  <h1>Mandarin, first block</h1>
+  <p class="lede">Fifteen sessions. Everything on this page is something you will use in a room, not something you will be tested on.</p>
+</header>
+
+<section id="how">
+  <h2>How this works</h2>
+  <p class="note">Four things worth knowing before session one, so the design makes sense as you go.</p>
+  <ul class="facts">
+    <li><b>The target is ILR 1, narrow</b><span>Twelve months of daily practice gets you to introductions, courtesies, and following the shape of a conversation in your own field. Not negotiating. Anyone promising more is selling.</span></li>
+    <li><b>Ten minutes daily beats ninety weekly</b><span>You already know this from the keyboard. Same reason, same mechanism.</span></li>
+    <li><b>You will not write characters</b><span>Recognition only, about sixty simplified and fifteen traditional. Handwriting has the lowest return of anything available to you, so we are skipping it on purpose.</span></li>
+    <li><b>Colour is tone, all the way down</b><span>Character, pinyin, and the English underneath it all carry the same colour. Red level, amber rising, green low, blue falling, grey neutral. Follow one colour across the three lines and you can see which English word belongs to which Chinese one.</span></li>
+  </ul>
+</section>
+
+<section id="warmup">
+  <h2>Daily warm-up</h2>
+  <p class="note">Five minutes, every day, indefinitely. Say it out loud. Silent reading does nothing here.</p>
+
+  <h3>The four tones</h3>
+  <div class="tones">
+    <div class="tone"><span class="mark hz t1">mā</span><div><b>Level</b><span class="d">Sustained, no movement. A held note.</span></div></div>
+    <div class="tone"><span class="mark hz t2">má</span><div><b>Rising</b><span class="d">Play an ascending fifth, then sing it as one glide rather than two notes. That glide is the tone.</span></div></div>
+    <div class="tone"><span class="mark hz t3">mǎ</span><div><b>Low</b><span class="d">Stay low and flat. The textbook dip is rare in real speech. Learn the flat version first.</span></div></div>
+    <div class="tone"><span class="mark hz t4">mà</span><div><b>Falling</b><span class="d">Sharp fall from high, short. Staccato.</span></div></div>
+  </div>
+
+  <h3>Tone pairs</h3>
+  <p class="note" style="margin-bottom:.6rem">Speech is made of pairs, not isolated syllables. This is the drill that actually moves you.</p>
+  <div class="pairs" id="pairBox"></div>
+
+  <h3>Consonants that will trip you</h3>
+  <div class="pairs">zh / j &nbsp;&nbsp; ch / q &nbsp;&nbsp; sh / x &nbsp;&nbsp; z / c / s &nbsp;&nbsp; r &nbsp;&nbsp; ü / u</div>
+
+  <h3>Two sound rules</h3>
+  <p id="rule1"></p>
+  <p id="rule2"></p>
+</section>
+
+<section id="drill">
+  <h2>Drill</h2>
+  <p class="note">English appears, you say it in Mandarin out loud, then reveal and play it back. Wrong is fine. Silent is not.</p>
+  <div class="drill">
+    <p class="prompt" id="dPrompt">Press start.</p>
+    <div class="answer hidden" id="dAnswer"></div>
+    <div class="row">
+      <button class="primary" id="dNext">Start</button>
+      <button id="dReveal" disabled>Reveal</button>
+      <button id="dPlay" disabled>Play</button>
+      <span class="count" id="dCount"></span>
+    </div>
+  </div>
+  <div class="audionote">Audio uses your device's built-in Mandarin voice. If nothing plays, your phone or computer has no Chinese voice installed. On iOS add one under Settings, Accessibility, Spoken Content, Voices. On Android, under Settings, Text-to-speech.</div>
+</section>
+
+<section id="say">
+  <h2>What you can say</h2>
+  <p class="note">Three lines per sentence: characters, sound, meaning. The pinyin stays on the page permanently, because the point is to get the sentence out of your mouth, not to decode it. The English sits in Chinese word order, so the gaps and inversions you see are the grammar.</p>
+  <div class="toggles">
+    <button id="tEn" aria-pressed="false">Hide English</button>
+    <button id="tPlain" aria-pressed="false">Tone colour off</button>
+    <button id="tSlow" aria-pressed="false">Slow audio</button>
+  </div>
+  <div id="sentList"></div>
+</section>
+
+<section id="words">
+  <h2>Words</h2>
+  <p class="note">Everything from the first four lessons plus your own vocabulary. Search in English, characters, or pinyin.</p>
+  <p class="legend">
+    <span class="t1"><b>Level</b></span>
+    <span class="t2"><b>Rising</b></span>
+    <span class="t3"><b>Low</b></span>
+    <span class="t4"><b>Falling</b></span>
+    <span class="t0"><b>Neutral</b></span>
+  </p>
+  <input class="search" id="wSearch" type="search" placeholder="Search" aria-label="Search words">
+  <table id="wTable"><tbody></tbody></table>
+  <p class="empty" id="wEmpty">Nothing matches that.</p>
+</section>
+
+<section id="room">
+  <h2>In the room</h2>
+  <p class="note">None of this is language. All of it will matter more in your first year than any sentence above.</p>
+  <div class="room" id="roomBox"></div>
+</section>
+
+<section id="takehome">
+  <h2>Take-home practice</h2>
+  <p class="note">Ten minutes a day, six days a week. Every week ends with one thing you bring to the session and say out loud. That is the only homework there is.</p>
+  <ul class="weeks" id="weekList"></ul>
+</section>
+
+<footer id="foot"></footer>
+
+</div>
+
+<script>
+(function(){
+  /* ---------- tone from pinyin diacritic ---------- */
+  var TM={};
+  (function(){
+    var sets=[["ā","ē","ī","ō","ū","ǖ"],["á","é","í","ó","ú","ǘ"],
+              ["ǎ","ě","ǐ","ǒ","ǔ","ǚ"],["à","è","ì","ò","ù","ǜ"]];
+    sets.forEach(function(row,i){row.forEach(function(c){TM[c]=i+1})});
+  })();
+  function toneOf(syl){
+    if(!syl) return 0;
+    var s=syl.toLowerCase();
+    for(var i=0;i<s.length;i++){ if(TM[s[i]]) return TM[s[i]] }
+    return 0;
+  }
+  var CJK=/[\u3400-\u9FFF]/;
+  function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
+
+  /* colour characters of a chunk against its syllables */
+  function hzHTML(hz,syls){
+    var out="",k=0;
+    for(var i=0;i<hz.length;i++){
+      var ch=hz[i];
+      if(CJK.test(ch)){ out+='<span class="t'+toneOf(syls[k])+'">'+esc(ch)+'</span>'; k++ }
+      else out+=esc(ch);
+    }
+    return out;
+  }
+  function pyHTML(syls){
+    return syls.map(function(s){return '<span class="t'+toneOf(s)+'">'+esc(s)+'</span>'}).join("");
+  }
+  function enHTML(en,syls){
+    if(!en) return "";
+    return '<span class="t'+toneOf(syls[0])+'">'+esc(en)+'</span>';
+  }
+  function glossHTML(chunks){
+    return '<div class="gloss">'+chunks.map(function(c){
+      return '<span class="ck"><span class="hz">'+hzHTML(c[0],c[1])+'</span>'+
+             '<span class="py">'+pyHTML(c[1])+'</span>'+
+             '<span class="en">'+enHTML(c[2],c[1])+'</span></span>';
+    }).join("")+'</div>';
+  }
+  function plainHz(chunks){return chunks.map(function(c){return c[0]}).join("")}
+
+  /* ---------- data ---------- */
+  /* chunk = [characters, [pinyin syllables], english gloss] */
+  var SENTS=[
+  ["Meeting someone",[["您好。",["nín","hǎo"],"hello"]],"Hello."],
+  ["Meeting someone",[["请问",["qǐng","wèn"],"may I ask"],["您",["nín"],"your"],["贵姓？",["guì","xìng"],"surname"]],"May I ask your surname?"],
+  ["Meeting someone",[["我",["wǒ"],"I"],["姓",["xìng"],"am surnamed"],["___，",[],"___"],["叫",["jiào"],"am called"],["___。",[],"___"]],"My surname is ___, I'm called ___."],
+  ["Meeting someone",[["您",["nín"],"you"],["叫",["jiào"],"are called"],["什么",["shén","me"],"what"],["名字？",["míng","zi"],"name"]],"What is your name?"],
+  ["Meeting someone",[["我",["wǒ"],"I"],["是",["shì"],"am"],["美国人。",["Měi","guó","rén"],"American"]],"I'm American."],
+  ["Meeting someone",[["您",["nín"],"you"],["是",["shì"],"are"],["哪里",["nǎ","lǐ"],"where"],["人？",["rén"],"person"]],"Where are you from?"],
+  ["Meeting someone",[["很",["hěn"],"very"],["高兴",["gāo","xìng"],"pleased"],["认识",["rèn","shi"],"to meet"],["您。",["nín"],"you"]],"Pleased to meet you."],
+  ["Meeting someone",[["请问",["qǐng","wèn"],"may I ask"],["您",["nín"],"you"],["有",["yǒu"],"have"],["名片",["míng","piàn"],"a card"],["吗？",["ma"],"?"]],"May I ask, do you have a card?"],
+
+  ["Counting",[["我",["wǒ"],"I"],["有",["yǒu"],"have"],["两",["liǎng"],"two"],["个",["ge"],"[measure]"],["客户。",["kè","hù"],"clients"]],"I have two clients."],
+  ["Counting",[["我们",["wǒ","men"],"our"],["公司",["gōng","sī"],"firm"],["有",["yǒu"],"has"],["十四",["shí","sì"],"fourteen"],["个",["ge"],"[measure]"],["办公室。",["bàn","gōng","shì"],"offices"]],"Our firm has fourteen offices."],
+  ["Counting",[["洛杉矶",["Luò","shān","jī"],"Los Angeles"],["有",["yǒu"],"has"],["很多",["hěn","duō"],"many"],["中国",["Zhōng","guó"],"Chinese"],["公司。",["gōng","sī"],"companies"]],"There are a lot of Chinese companies in LA."],
+  ["Counting",[["我",["wǒ"],"I"],["有",["yǒu"],"have"],["中文",["Zhōng","wén"],"Chinese"],["名字。",["míng","zi"],"name"]],"I have a Chinese name."],
+
+  ["Where you work",[["我",["wǒ"],"I"],["在",["zài"],"in"],["洛杉矶",["Luò","shān","jī"],"Los Angeles"],["工作。",["gōng","zuò"],"work"]],"I work in Los Angeles."],
+  ["Where you work",[["请问",["qǐng","wèn"],"may I ask"],["您",["nín"],"you"],["在",["zài"],"at"],["哪里",["nǎ","lǐ"],"where"],["工作？",["gōng","zuò"],"work"]],"May I ask where you work?"],
+  ["Where you work",[["我",["wǒ"],"I"],["不是",["bú","shì"],"am not"],["律师，",["lǜ","shī"],"a lawyer"],["我",["wǒ"],"I"],["做",["zuò"],"do"],["政府关系。",["zhèng","fǔ","guān","xi"],"government relations"]],"I'm not a lawyer. I do government relations."],
+  ["Where you work",[["我",["wǒ"],"I"],["以前",["yǐ","qián"],"previously"],["在",["zài"],"at"],["加州",["Jiā","zhōu"],"California"],["议会",["yì","huì"],"legislature"],["工作。",["gōng","zuò"],"worked"]],"I used to work in the California legislature."],
+  ["Where you work",[["他",["tā"],"he"],["是",["shì"],"is"],["开发商。",["kāi","fā","shāng"],"a developer"]],"He's a developer."],
+  ["Where you work",[["她",["tā"],"she"],["在",["zài"],"at"],["市政府",["shì","zhèng","fǔ"],"city hall"],["工作。",["gōng","zuò"],"works"]],"She works at city hall."],
+  ["Where you work",[["我们",["wǒ","men"],"we"],["都",["dōu"],"all"],["在",["zài"],"are in"],["洛杉矶。",["Luò","shān","jī"],"Los Angeles"]],"We're all in Los Angeles."],
+
+  ["Talking about the work",[["您",["nín"],"you"],["忙不忙？",["máng","bu","máng"],"busy or not"]],"Are you busy?"],
+  ["Talking about the work",[["我",["wǒ"],"I"],["每天",["měi","tiān"],"every day"],["都",["dōu"],"all"],["很",["hěn"],"very"],["忙。",["máng"],"busy"]],"I'm busy every day."],
+  ["Talking about the work",[["这个",["zhè","ge"],"this"],["项目",["xiàng","mù"],"project"],["很",["hěn"],"is"],["复杂。",["fù","zá"],"complicated"]],"This project is complicated."],
+  ["Talking about the work",[["这个",["zhè","ge"],"this"],["项目",["xiàng","mù"],"project"],["难不难？",["nán","bu","nán"],"difficult or not"]],"Is this project difficult?"],
+  ["Talking about the work",[["我的",["wǒ","de"],"my"],["工作",["gōng","zuò"],"work"],["是",["shì"],"is"],["政府关系。",["zhèng","fǔ","guān","xi"],"government relations"]],"My work is government relations."],
+  ["Talking about the work",[["我们的",["wǒ","men","de"],"our"],["客户",["kè","hù"],"clients"],["在",["zài"],"are in"],["洛杉矶。",["Luò","shān","jī"],"Los Angeles"]],"Our clients are in Los Angeles."],
+  ["Talking about the work",[["我",["wǒ"],"I"],["喜欢",["xǐ","huān"],"like"],["骑",["qí"],"riding"],["自行车。",["zì","xíng","chē"],"a bicycle"]],"I like cycling."],
+  ["Talking about the work",[["我",["wǒ"],"I"],["喜欢",["xǐ","huān"],"like"],["弹",["tán"],"playing"],["钢琴。",["gāng","qín"],"piano"]],"I like playing piano."]
+  ];
+
+  /* word = [characters, [syllables], english] */
+  var WORDS=[
+  ["您",["nín"],"you, polite"],["我",["wǒ"],"I, me"],["好",["hǎo"],"good, fine"],
+  ["姓",["xìng"],"to be surnamed"],["叫",["jiào"],"to be called"],["是",["shì"],"to be"],
+  ["人",["rén"],"person"],["什么",["shén","me"],"what"],["名字",["míng","zi"],"name"],
+  ["请问",["qǐng","wèn"],"may I ask"],["贵姓",["guì","xìng"],"your surname, polite"],
+  ["哪里",["nǎ","lǐ"],"where"],["美国",["Měi","guó"],"United States"],["中国",["Zhōng","guó"],"China"],
+  ["台湾",["Tái","wān"],"Taiwan"],["洛杉矶",["Luò","shān","jī"],"Los Angeles"],
+  ["有",["yǒu"],"to have"],["没有",["méi","yǒu"],"to not have"],["也",["yě"],"also"],
+  ["都",["dōu"],"all, both"],["两",["liǎng"],"two, before a measure word"],["很多",["hěn","duō"],"a lot of"],
+  ["个",["ge"],"general measure word"],["位",["wèi"],"measure word for people, polite"],
+  ["家",["jiā"],"measure word for companies"],["张",["zhāng"],"measure word for cards"],
+  ["不",["bù"],"not"],["在",["zài"],"at, in"],["工作",["gōng","zuò"],"to work, work"],
+  ["公司",["gōng","sī"],"company"],["办公室",["bàn","gōng","shì"],"office"],
+  ["名片",["míng","piàn"],"business card"],["客户",["kè","hù"],"client"],["会议",["huì","yì"],"meeting"],
+  ["合作",["hé","zuò"],"to cooperate"],["政府",["zhèng","fǔ"],"government"],
+  ["关系",["guān","xi"],"relations, connections"],
+  ["市政府",["shì","zhèng","fǔ"],"city hall"],["政策",["zhèng","cè"],"policy"],
+  ["议会",["yì","huì"],"legislature"],["议员",["yì","yuán"],"council member, legislator"],
+  ["项目",["xiàng","mù"],"project"],["开发",["kāi","fā"],"development"],
+  ["开发商",["kāi","fā","shāng"],"developer"],["土地",["tǔ","dì"],"land"],
+  ["交通",["jiāo","tōng"],"transportation"],["住房",["zhù","fáng"],"housing"],
+  ["基础设施",["jī","chǔ","shè","shī"],"infrastructure"],["审批",["shěn","pī"],"approval, permitting"],
+  ["律师",["lǜ","shī"],"lawyer"],["总经理",["zǒng","jīng","lǐ"],"general manager"],
+  ["董事长",["dǒng","shì","zhǎng"],"chairman"],["经理",["jīng","lǐ"],"manager"],
+  ["主任",["zhǔ","rèn"],"director"],["女士",["nǚ","shì"],"Ms., formal"],
+  ["以前",["yǐ","qián"],"previously, before"],["每天",["měi","tiān"],"every day"],
+  ["忙",["máng"],"busy"],["累",["lèi"],"tired"],["难",["nán"],"difficult"],
+  ["复杂",["fù","zá"],"complicated"],["喜欢",["xǐ","huān"],"to like"],
+  ["自行车",["zì","xíng","chē"],"bicycle"],["钢琴",["gāng","qín"],"piano"],
+  ["认识",["rèn","shi"],"to meet, to know"],["高兴",["gāo","xìng"],"pleased, glad"]
+  ];
+
+  var WEEKS=[
+  ["The instrument","Four-tone track daily, plus your Chinese name ten times.","The four tones from memory, and your own name."],
+  ["Initials","Initials track, tones for maintenance, <span class='hz'>您好</span> ten times.","<span class='hz'>您好</span> cold, and five minimal pairs read aloud."],
+  ["Finals and tone pairs","Tone pairs track, one pair type per day. Finals and initials alternating.","Any six tone pairs, cold, with nothing playing."],
+  ["Assembly","First sixteen words. Press play, listen, say it back.","Eight of those words, spoken from the page."],
+  ["Meeting someone","Meeting someone set, first six. Drill widget, three prompts a day.","The Lesson 1 dialogue, both sides, spoken."],
+  ["Your version","Self-introduction three times a day. This one never stops.","A thirty-second voice memo of your introduction."],
+  ["Having and not having","Counting set, audio then repeat. Drill widget, mixed.","<span class='hz'>请问您有名片吗？</span> plus three <span class='hz'>有</span> sentences."],
+  ["Counting your world","Counting set complete. Say each line before you play it, then check yourself.","Three true sentences about your own firm, using <span class='hz'>有</span> and a measure word."],
+  ["Negation and workplace","Where you work, first two. Negation contrast track.","<span class='hz'>请问您在哪里工作？</span> answered three different ways."],
+  ["What you do","Self-introduction v2 three times. Where you work set complete.","A voice memo of version two."],
+  ["Titles and cards","Traditional set: look at the character, say the word. Deflection line five times.","Five traditional characters named aloud, and the deflection line without hesitation."],
+  ["The polite question","Talking about the work, first three. Convert a <span class='hz'>吗</span> question to verb-not-verb daily.","Three verb-not-verb questions you would actually ask a client."],
+  ["Describing the work","Talking about the work complete. Drill on shuffle, answering aloud first.","Four sentences about a real project, unscripted."],
+  ["Your lexicon","Full word list aloud. Drill widget, all twenty-seven, shuffled.","Ninety seconds of small talk about piano and cycling, unscripted."],
+  ["Self-introduction, final","The paragraph, aloud, daily. Warm-up plus whichever set is weakest.","The paragraph, cold, to every meeting from here on."]
+  ];
+
+  /* ---------- speech ---------- */
+  var synth=window.speechSynthesis,voice=null,slow=false,curBtn=null;
+  function pickVoice(){
+    if(!synth) return;
+    var vs=synth.getVoices()||[];
+    voice=vs.filter(function(v){return /^zh[-_]?CN/i.test(v.lang)})[0]
+       || vs.filter(function(v){return /^zh/i.test(v.lang)})[0] || null;
+    if(!voice && vs.length) document.body.classList.add("nospeak");
+    else if(voice) document.body.classList.remove("nospeak");
+  }
+  if(synth){
+    pickVoice();
+    if(synth.addEventListener) synth.addEventListener("voiceschanged",pickVoice);
+    else synth.onvoiceschanged=pickVoice;
+    setTimeout(pickVoice,700);
+  } else { document.body.classList.add("nospeak") }
+
+  function speak(text,btn){
+    if(!synth) return;
+    try{
+      synth.cancel();
+      if(curBtn){curBtn.classList.remove("on");curBtn=null}
+      var u=new SpeechSynthesisUtterance(text);
+      u.lang="zh-CN"; if(voice) u.voice=voice;
+      u.rate=slow?0.55:0.9; u.pitch=1;
+      if(btn){
+        curBtn=btn;btn.classList.add("on");
+        u.onend=u.onerror=function(){btn.classList.remove("on");if(curBtn===btn)curBtn=null};
+      }
+      synth.speak(u);
+    }catch(e){}
+  }
+  var SPK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>';
+  function spkBtn(text){return '<button class="spk" data-say="'+esc(text)+'" aria-label="Play">'+SPK+'</button>'}
+
+  document.addEventListener("click",function(e){
+    var b=e.target.closest?e.target.closest("button.spk"):null;
+    if(b&&b.getAttribute("data-say")) speak(b.getAttribute("data-say"),b);
+  });
+
+  /* ---------- storage ---------- */
+  var K="sgs:";
+  function g(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function st(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+  function dl(k){try{localStorage.removeItem(k)}catch(e){}}
+
+  /* ---------- hero ---------- */
+  var GOAL=[["您好，",["nín","hǎo"]],["我",["wǒ"]],["姓",["xìng"]],["___，",[]],["叫",["jiào"]],["___。",[]],
+    ["我",["wǒ"]],["是",["shì"]],["美国人，",["Měi","guó","rén"]],["在",["zài"]],["洛杉矶",["Luò","shān","jī"]],["工作。",["gōng","zuò"]],
+    ["我",["wǒ"]],["做",["zuò"]],["政府关系。",["zhèng","fǔ","guān","xi"]],
+    ["我",["wǒ"]],["以前",["yǐ","qián"]],["在",["zài"]],["加州",["Jiā","zhōu"]],["议会",["yì","huì"]],["工作。",["gōng","zuò"]],
+    ["很",["hěn"]],["高兴",["gāo","xìng"]],["认识",["rèn","shi"]],["您。",["nín"]]];
+  document.getElementById("goalHz").innerHTML=GOAL.map(function(c){return hzHTML(c[0],c[1])}).join("");
+  document.getElementById("goalPy").innerHTML=GOAL.map(function(c){return pyHTML(c[1])}).filter(Boolean).join(" ");
+
+  /* ---------- warm-up ---------- */
+  var PAIRS=[["bā","bá"],["mú","mù"],["fá","fà"],["bǔ","bù"],["mǎ","mā"],["pó","pò"],["tǔ","tú"]];
+  document.getElementById("pairBox").innerHTML=PAIRS.map(function(p){
+    return '<span class="t'+toneOf(p[0])+'">'+p[0]+'</span>-<span class="t'+toneOf(p[1])+'">'+p[1]+'</span>';
+  }).join("&nbsp;&nbsp; ");
+
+  document.getElementById("rule1").innerHTML=
+    '<span class="hz">'+hzHTML("你好",["nǐ","hǎo"])+'</span> is said '+
+    '<span class="py"><span class="t2">ní</span> <span class="t3">hǎo</span></span>, not '+
+    '<span class="py"><span class="t3">nǐ hǎo</span></span>. When two low tones meet, the first one rises.';
+  document.getElementById("rule2").innerHTML=
+    '<span class="hz">'+hzHTML("不",["bù"])+'</span> is said <span class="py t2">bú</span> before a falling tone. '+
+    '<span class="py"><span class="t2">bú</span> <span class="t4">shì</span></span>, not '+
+    '<span class="py"><span class="t4">bù shì</span></span>.';
+
+  /* ---------- room ---------- */
+  var ROOM=[
+    [0,"Business cards",
+     ["Two hands, card facing them. Read it before you put it away, and say something about it. Never write on a card in front of the person who gave it to you, and never slide it straight into a pocket."],
+     [["请问",["qǐng","wèn"],"may I ask"],["您",["nín"],"you"],["有",["yǒu"],"have"],["名片",["míng","piàn"],"a card"],["吗？",["ma"],"?"]],
+     "A complete and polite way to ask for one."],
+    [0,"Names and titles",
+     ["Surname plus title is the professional default, and the title usually shortens.",
+      "Get this right and you sound like you have done this before. Get it wrong and you sound like a first-time visitor, regardless of how good your tones are."],
+     [["王总",["Wáng","zǒng"],"GM Wang"],["李董",["Lǐ","dǒng"],"Chairman Li"],["张经理",["Zhāng","jīng","lǐ"],"Manager Zhang"]],
+     "Surname first, then the shortened title."],
+    [1,"One word to avoid",
+     ["Most beginner textbooks teach the word below as the standard address for a woman. It is fine in Taiwan and carries a sex-work connotation across much of mainland China. You will be in rooms with senior women."],
+     [["小姐",["xiǎo","jie"],"miss"],["女士",["nǚ","shì"],"Ms."]],
+     "Use the second one, or surname plus title."],
+    [1,"Mirror their vocabulary, never lead with your own",
+     ["If they use one term for the mainland, you use that term. If they use another, you switch. You do not introduce the terminology, correct anyone, or connect dots out loud.",
+      "We will build you one clean line in Mandarin for declining cross-strait questions, and drill it like any other sentence. Declining visibly reads as disciplined. Improvising reads as a liability, and word travels."],
+     [["您",["nín"],"you"],["是",["shì"],"are"],["哪里",["nǎ","lǐ"],"where"],["人？",["rén"],"person"]],
+     "The neutral opener. It lets them answer however they want to answer."],
+    [0,"Working with an interpreter",
+     ["Speak in short segments and stop. Look at the person you are talking to, not at the interpreter. No idioms, no sports metaphors, no wordplay. Send a glossary of project names and technical terms ahead of the meeting.",
+      "Most people never learn this and it costs them real money."],
+     null,null],
+    [0,"The first twenty minutes are the meeting",
+     ["Family, food, travel, what you do on weekends. It is not small talk preceding the business. It is the part where they decide whether to do business."],
+     [["我",["wǒ"],"I"],["喜欢",["xǐ","huān"],"like"],["弹",["tán"],"playing"],["钢琴。",["gāng","qín"],"piano"]],
+     "Worth more to you than any policy term on this page."]
+  ];
+  document.getElementById("roomBox").innerHTML=ROOM.map(function(a){
+    var h='<article'+(a[0]?' class="flag"':'')+'><h3>'+a[1]+'</h3>';
+    h+=a[2].map(function(p){return '<p>'+p+'</p>'}).join("");
+    if(a[3]){
+      h+='<div class="inline">'+glossHTML(a[3])+spkBtn(plainHz(a[3]))+'</div>';
+      if(a[4]) h+='<p>'+a[4]+'</p>';
+    }
+    return h+'</article>';
+  }).join("");
+
+  document.getElementById("foot").innerHTML='Based on <span class="hz">'+
+    hzHTML("来学华语",["lái","xué","huá","yǔ"])+
+    '</span> Book 1, simplified characters. Recordings from each session are kept so you can hear session one against session fifteen.';
+
+  /* ---------- sentences ---------- */
+  var last=null;
+  document.getElementById("sentList").innerHTML=SENTS.map(function(x){
+    var pre="";
+    if(x[0]!==last){pre='<p class="setname">'+x[0]+'</p>';last=x[0]}
+    return pre+'<div class="sent"><div class="body">'+glossHTML(x[1])+
+      '<p class="nat">'+esc(x[2])+'</p></div>'+spkBtn(plainHz(x[1]))+'</div>';
+  }).join("");
+
+  /* ---------- toggles ---------- */
+  function bind(id,cls,onLabel,offLabel,key,extra){
+    var btn=document.getElementById(id);
+    function set(v){
+      if(cls) document.body.classList.toggle(cls,v);
+      btn.setAttribute("aria-pressed",v?"true":"false");
+      btn.textContent=v?onLabel:offLabel;
+      st(K+key,v?"1":"0");
+      if(extra) extra(v);
+    }
+    set(g(K+key)==="1");
+    btn.addEventListener("click",function(){set(btn.getAttribute("aria-pressed")!=="true")});
+  }
+  bind("tEn","hide-en","Show English","Hide English","en");
+  bind("tPlain","plain","Tone colour on","Tone colour off","plain");
+  bind("tSlow",null,"Normal speed","Slow audio","slow",function(v){slow=v});
+
+  /* ---------- words ---------- */
+  var tb=document.querySelector("#wTable tbody");
+  tb.innerHTML=WORDS.map(function(w){
+    var py=w[1].join("");
+    return '<tr data-k="'+esc((w[0]+" "+py+" "+w[2]).toLowerCase())+'">'+
+      '<td class="h">'+hzHTML(w[0],w[1])+'</td>'+
+      '<td class="p">'+pyHTML(w[1])+'</td>'+
+      '<td>'+enHTML(w[2],w[1])+'</td>'+
+      '<td class="a">'+spkBtn(w[0])+'</td></tr>';
+  }).join("");
+  var search=document.getElementById("wSearch"),empty=document.getElementById("wEmpty");
+  search.addEventListener("input",function(){
+    var q=search.value.trim().toLowerCase(),n=0;
+    Array.prototype.forEach.call(tb.rows,function(r){
+      var hit=!q||r.getAttribute("data-k").indexOf(q)>-1;
+      r.classList.toggle("gone",!hit); if(hit)n++;
+    });
+    empty.style.display=n?"none":"block";
+  });
+
+  /* ---------- drill ---------- */
+  var order=[],idx=-1;
+  var pEl=document.getElementById("dPrompt"),aEl=document.getElementById("dAnswer"),
+      nBtn=document.getElementById("dNext"),rBtn=document.getElementById("dReveal"),
+      plBtn=document.getElementById("dPlay"),cEl=document.getElementById("dCount");
+  function shuffle(){
+    order=SENTS.map(function(_,i){return i});
+    for(var i=order.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=order[i];order[i]=order[j];order[j]=t}
+  }
+  function next(){
+    if(idx<0||idx>=order.length-1){shuffle();idx=0}else{idx++}
+    var it=SENTS[order[idx]];
+    pEl.textContent=it[2];
+    aEl.innerHTML=glossHTML(it[1]);
+    aEl.classList.add("hidden");
+    rBtn.disabled=false; plBtn.disabled=false;
+    nBtn.textContent="Next";
+    cEl.textContent=(idx+1)+" of "+order.length;
+  }
+  nBtn.addEventListener("click",next);
+  rBtn.addEventListener("click",function(){aEl.classList.remove("hidden");rBtn.disabled=true});
+  plBtn.addEventListener("click",function(){if(idx>=0)speak(plainHz(SENTS[order[idx]][1]),null)});
+
+  /* ---------- progress ---------- */
+  var wl=document.getElementById("weekList");
+  wl.innerHTML=WEEKS.map(function(w,i){
+    return '<li><label><input type="checkbox" data-w="'+(i+1)+'"><span class="n">'+(i+1)+'</span>'+
+      '<span class="t"><b>'+esc(w[0])+'</b>'+
+      '<span class="daily">'+w[1]+'</span>'+
+      '<span class="bring"><b>Bring:</b> '+w[2]+'</span></span></label></li>';
+  }).join("");
+  Array.prototype.forEach.call(wl.querySelectorAll("input"),function(b){
+    var key=K+"w"+b.getAttribute("data-w");
+    if(g(key)==="1"){b.checked=true;b.parentNode.parentNode.classList.add("on")}
+    b.addEventListener("change",function(){
+      b.parentNode.parentNode.classList.toggle("on",b.checked);
+      if(b.checked){st(key,"1")}else{dl(key)}
+    });
+  });
+
+  /* ---------- nav ---------- */
+  var links=Array.prototype.slice.call(document.querySelectorAll(".bar a")),m={};
+  links.forEach(function(a){m[a.getAttribute("href").slice(1)]=a});
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        var a=m[e.target.id]; if(!a) return;
+        if(e.isIntersecting){links.forEach(function(l){l.classList.remove("on")});a.classList.add("on")}
+      });
+    },{rootMargin:"-20% 0px -65% 0px",threshold:0});
+    Object.keys(m).forEach(function(id){var el=document.getElementById(id);if(el)io.observe(el)});
+  }
+})();
+</script>
+</body>
+</html>
